@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>Spring Start</title>
+      <link href="/java/spring01/"/>
+      <url>/java/spring01/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>Spring version：5.2.6.RELEASE</p><p>Spring boot version：2.2.6.RELEASE</p></blockquote><hr><h2 id="AOP"><a href="#AOP" class="headerlink" title="AOP"></a>AOP</h2><ul><li>JDK Proxy 基于 interface ， 运行时动态代理</li><li>Cglib 基于 extends ， 运行时动态代理</li><li>AspectJ  ： 编译时增强</li></ul><h2 id="Bean-Scopes"><a href="#Bean-Scopes" class="headerlink" title="Bean Scopes"></a>Bean Scopes</h2><p>详细描述参考 <a href="https://docs.spring.io/spring/docs/5.2.6.RELEASE/spring-framework-reference/core.html#beans-factory-scopes" target="_blank" rel="noopener">这里</a></p><ul><li>singleton ： 单例， <strong>默认 scope</strong></li><li>prototype ： 原型模式，每次获取该对象时， 都会 clone 一个新的对象实例</li><li>request ： 一次请求一个实例对象</li><li>session ： 一次 session 会话</li><li>application ：bean 的作用域限定在 <code>ServletContext</code> 的生命周期</li><li>websocket ：bean 定义的作用域限定为 <code>WebSocket</code> 的生命周期</li><li><a href="https://docs.spring.io/spring-framework/docs/5.2.6.RELEASE/javadoc-api/org/springframework/context/support/SimpleThreadScope.html" target="_blank" rel="noopener">thread</a> ： 需要手动注册该 scope 才能使用</li></ul><p>通过 <code>@Scope(value = "xxx")</code> 或者 <code>@RequestScope</code> 等注解，可以指定 bean 的 scope</p><hr><h2 id="MyBatis"><a href="#MyBatis" class="headerlink" title="MyBatis"></a>MyBatis</h2><p><a href="https://www.jianshu.com/p/15781ec742f2" target="_blank" rel="noopener">https://www.jianshu.com/p/15781ec742f2</a></p><p>MQ</p><p>MySQL</p><p>Dubbo</p><p><a href="http://dubbo.apache.org/zh-cn/docs/user/SUMMARY.html" target="_blank" rel="noopener">http://dubbo.apache.org/zh-cn/docs/user/SUMMARY.html</a></p><hr><h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><h3 id="Spring-Docs"><a href="#Spring-Docs" class="headerlink" title="Spring Docs"></a><a href="https://docs.spring.io/spring/docs" target="_blank" rel="noopener">Spring Docs</a></h3><h3 id="Spring-boot-Docs"><a href="#Spring-boot-Docs" class="headerlink" title="Spring-boot Docs"></a><a href="https://docs.spring.io/spring-boot/docs/" target="_blank" rel="noopener">Spring-boot Docs</a></h3><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> languages </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> java </tag>
+            
+            <tag> spring </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>一趣二三句</title>
       <link href="/mine/sentence/"/>
       <url>/mine/sentence/</url>
