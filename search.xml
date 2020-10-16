@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>有序数组的平方</title>
+      <link href="/leetcode/arrays/you-xu-shu-zu-de-ping-fang/"/>
+      <url>/leetcode/arrays/you-xu-shu-zu-de-ping-fang/</url>
+      
+        <content type="html"><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><blockquote><p>给定一个按非递减顺序排序的整数数组 A，返回每个数字的平方组成的新数组，要求也按非递减顺序排序。</p><p>示例 1：</p><p>输入：[-4,-1,0,3,10]<br>输出：[0,1,9,16,100]<br>示例 2：</p><p>输入：[-7,-3,2,3,11]<br>输出：[4,9,9,49,121]</p><p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/squares-of-a-sorted-array" target="_blank" rel="noopener">https://leetcode-cn.com/problems/squares-of-a-sorted-array</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p></blockquote><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>同样，我们很容易想到： 先给这个数组来个平方放入新的数组， 然后对新的数组做排序就好了。因为要用到排序，所以时间复杂度不可能为 O(n) 。</p><p>但题目给定数组为 <strong>非递减</strong> 数组，即一个有序数组。</p><p>也就是说，当我们给每个数平方时(如果该数组含有负数) ， 则最大值必然在最左或者最右，然后向中间递减。</p><p>按照这个特性，我们可以考虑通过 <strong><font color="red">双指针</font></strong> 来做这件事情。</p><p>左指针 <code>left</code> 从最左往最右走， 右指针 <code>right</code> 从最右往最左走。每次比较最指针的平方值 <code>leftSquare</code> 和 右指针的平方值 <code>rightSquare</code> ，将最大的值放到新数组的最右边，然后将相应的指针移动一步，直到左指针 <code>left</code> <strong>大于</strong>右指针 <code>right</code></p><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><pre class=" language-java"><code class="language-java"> <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">sortedSquares</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> ary<span class="token punctuation">)</span> <span class="token punctuation">{</span>        <span class="token comment" spellcheck="true">// 双指针， 是一种很有用的方法</span>        <span class="token comment" spellcheck="true">// 从左右两边分别往中间移动</span>        <span class="token keyword">int</span> left <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>        <span class="token keyword">int</span> right <span class="token operator">=</span> ary<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>        <span class="token comment" spellcheck="true">// 用于标记下一个元素需要插入的位置</span>        <span class="token keyword">int</span> idx <span class="token operator">=</span> right<span class="token punctuation">;</span>        <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> result <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">int</span><span class="token punctuation">[</span>ary<span class="token punctuation">.</span>length<span class="token punctuation">]</span><span class="token punctuation">;</span>        <span class="token keyword">while</span> <span class="token punctuation">(</span>left <span class="token operator">&lt;=</span> right<span class="token punctuation">)</span> <span class="token punctuation">{</span>            <span class="token keyword">int</span> leftSquare <span class="token operator">=</span> ary<span class="token punctuation">[</span>left<span class="token punctuation">]</span> <span class="token operator">*</span> ary<span class="token punctuation">[</span>left<span class="token punctuation">]</span><span class="token punctuation">;</span>            <span class="token keyword">int</span> rightSquare <span class="token operator">=</span> ary<span class="token punctuation">[</span>right<span class="token punctuation">]</span> <span class="token operator">*</span> ary<span class="token punctuation">[</span>right<span class="token punctuation">]</span><span class="token punctuation">;</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span>leftSquare <span class="token operator">>=</span> rightSquare<span class="token punctuation">)</span> <span class="token punctuation">{</span>                left<span class="token operator">++</span><span class="token punctuation">;</span>                result<span class="token punctuation">[</span>idx<span class="token operator">--</span><span class="token punctuation">]</span> <span class="token operator">=</span> leftSquare<span class="token punctuation">;</span>            <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>                right<span class="token operator">--</span><span class="token punctuation">;</span>                result<span class="token punctuation">[</span>idx<span class="token operator">--</span><span class="token punctuation">]</span> <span class="token operator">=</span> rightSquare<span class="token punctuation">;</span>            <span class="token punctuation">}</span>        <span class="token punctuation">}</span>        <span class="token keyword">return</span> result<span class="token punctuation">;</span>    <span class="token punctuation">}</span></code></pre><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> leetcode </tag>
+            
+            <tag> leetcode-arrays </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>每日事毕</title>
       <link href="/mine/dailys/"/>
       <url>/mine/dailys/</url>
